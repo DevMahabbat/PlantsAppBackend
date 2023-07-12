@@ -1,13 +1,9 @@
-const { default: mongoose } = require("mongose");
+const { default: mongoose } = require("mongoose");
 
 const PlantPhotoSchema = new mongoose.Schema({
-  url: String,
-  plant: {type: mongoose.Types.ObjectId, ref: 'Plant'}
-    // user: { type: mongoose.Types.ObjectId, ref: "User" },
+  plant: { type: mongoose.Schema.Types.ObjectId, ref: "Plant" },
+  imageUrl: String,
+  description: String,
 });
 
-const PlantPhoto = mongoose.model("Plant", PlantPhotoSchema);
-
-module.exports = {
-  PlantPhoto,
-};
+module.exports = mongoose.model("PlantPhoto", PlantPhotoSchema);

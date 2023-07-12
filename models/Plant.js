@@ -4,14 +4,10 @@ const PlantSchema = new mongoose.Schema({
   name: String,
   description: String,
   rating: Number,
+  ratingCount: Number,
   publishDate: Date,
-  comments : [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
-//   user: { type: mongoose.Schema.Types.ObjectId, ref:"User"},
-  photos: [{ type: mongoose.Schema.Types.ObjectId, ref: "PlantPhoto"}],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  photos: [{ type: mongoose.Schema.Types.ObjectId, ref: "PlantPhoto" }],
 });
 
-const Plant = mongoose.model("Plant", PlantSchema);
-
-module.exports = {
-  Plant,
-};
+module.exports = mongoose.models.Plant || mongoose.model("Plant", PlantSchema);
