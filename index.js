@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/"); // Directory where uploaded images will be stored
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname); // Unique filename for each uploaded image
+    cb(file.filename); // Unique filename for each uploaded image
   },
 });
 app.use("/uploads", express.static("uploads"));
@@ -149,10 +149,9 @@ console.log(content);
     console.error("Error adding comment:", error);
     res.status(500).json({ success: false, message: "Failed to add comment" });
   }
-  
 });
 
-app.get("/", async (req,res) => { res.send("working fine")})
+
 // Start the server
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
