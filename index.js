@@ -53,7 +53,7 @@ console.log(filename+   "    filename");
     // Create a new PlantPhoto instance
     const plantPhoto = new PlantPhoto({
       plant: plantId,
-      imageUrl: originalname, // Save the filename or full path to the image, depending on your setup
+      imageUrl: filename, // Save the filename or full path to the image, depending on your setup
       description: req.body.description || "",
     });
 
