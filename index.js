@@ -48,11 +48,12 @@ app.post("/plants/:id/photos", upload.single("photo"), async (req, res) => {
   try {
     const plantId = req.params.id;
     const { originalname, filename } = req.file;
-console.log(originalname);
+console.log(originalname +'   original name');
+console.log(filename+   "    filename");
     // Create a new PlantPhoto instance
     const plantPhoto = new PlantPhoto({
       plant: plantId,
-      imageUrl: filename, // Save the filename or full path to the image, depending on your setup
+      imageUrl: originalname, // Save the filename or full path to the image, depending on your setup
       description: req.body.description || "",
     });
 
