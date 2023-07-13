@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/"); // Directory where uploaded images will be stored
   },
   filename: function (req, file, cb) {
-    cb(null , ""+ file.filename); // Unique filename for each uploaded image
+    cb(null , ""+ file.originalname); // Unique filename for each uploaded image
   },
 });
 app.use("/uploads", express.static("uploads"));
@@ -53,7 +53,7 @@ console.log(filename+   "    filename");
     // Create a new PlantPhoto instance
     const plantPhoto = new PlantPhoto({
       plant: plantId,
-      imageUrl: filename, // Save the filename or full path to the image, depending on your setup
+      imageUrl: originalname, // Save the filename or full path to the image, depending on your setup
       description: req.body.description || "",
     });
 
